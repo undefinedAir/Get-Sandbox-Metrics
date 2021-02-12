@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="./getSandboxUrl.js"></script>
+        <title>SBX Giraffe URL finder</title>
+    </head>
+    <body>
+        <h1>Create the Giraffe link to a Given Instances Sandbox</h1>
+        <h5>Instructions for use:
+            <br>
+            <br>Find the following 3 pieces of information, note them down in the text box or remember them;<br><br>
+            1. Database location; (lon, sc4, us1, am4, sin1 etc), this is in the sandbox URL before .medallia.com, for example 'example-sandbox-companyname.<em>lon</em>.medallia.com'<br>
+            2. Short Canonical name; copy everything before .sbx not including https://, for example; <em>'example-sandbox-companyname'</em><br>
+            3. Long canonical name; Full domain name up to .com, for example;<em>'example-sandbox-companyname.lon.medallia.com'<em><br>
+            4. Click 'Get Sandbox URL', paste in the variables you noted down above.<br>
+            5. The final prompt will give you the sandbox URL to copy paste into your browser to take you to the sbx metrics.
+        </h5>
+        <div id="new">
+            -
+        </div>
+      <!-- <p> Giraffe link: <input type="text" id="giraffeBox" value="value not generated yet!"></p> -->
+        <!-- Bifrost link: <input type="text" id="bifrostBox" value="value not generated yet!"> -->
+        <script>
+var dcName = ""
+var canonicalName = ""
+var fullUrl = ""
+var returnURL = "to be overwritten"
+function getSandboxUrl()
+{
+var dcName = prompt("What database is the sbx on? - this is in the SBX URL, before medallia.com, eg sc4");
+var canonicalName = prompt("Var cluster canonical name everything before .sbx, example; 'example-sandbox-companyname'");
+var fullUrl = prompt("Full domain name up to .com, example; 'example-sandbox-companyname.sea1.medallia.com'");
+var returnURL = ("https://giraffe.eng.medallia.com/d/RDnKmt5iz/express-overview?orgId=1&var-cluster_canonical_name=" + canonicalName + "&var-cluster_short_name=" + canonicalName +"&var-dbname=undefined&var-dc=" + dcName + "&var-domainname="+ fullUrl +"&var-env=sbx&var-node_filter=All&var-company_filter=All&var-node=All&var-company=All&from=now-15d&to=now&refresh=1y");
+var openGiraffe = window.confirm("Click OK if you wish to go to giraffe now in a new tab, if you click 'cancel' the URL for the sbx metrics will be displayed in an alert instead");
+if (openGiraffe) { // if they clicked "ok"
+    window.open(
+      returnURL, 
+      '_blank'
+    );
+} else { // if they clicked "cancel"
+}
+alert(returnURL)
+var newVar = document.getElementById("new").innerHTML;
+};
+
+</script>
+<script>
+
+ 
+   /* function getBifrostUrl()
+    {
+        var bifrostDc = prompt("what datacenter is this on?");
+        var bifrostCluster = prompt("what cluster name is this? Example: http://marriott.medallia.com/marriott becomes 'marriott'")
+        var bifrostUrl = ("https://bifrost.medallia.com/company/" + bifrostCluster +  "/" + bifrostDc + "/application/MEC#accesses=productionAccesses&navigation=accesses")
+        alert(bifrostUrl);
+        return bifrostUrl;
+    };
+*/
+        </script>
+      <p>
+           <input type = "button" onclick = "getSandboxUrl()" value = "Get Sandbox URL"> 
+          <!--   <input type = "button" onclick = "getBifrostUrl()" value = "Get Bifrost URL">  --> 
+        </p>
+    
+<!--
+        new button attempt
+
+<button onclick="getSandboxUrl()">Get Sandbox Url</button>
+    <script>
+
+let a=document.createElement('a');
+a.target='_blank';
+a.href=bifrostUrl;
+
+if (window.confirm('Ok to Confirm, Cancel to Stay here'))
+{
+a.click();
+};
+</script>
+           
+ <form returnUrl target="_blank">
+ 
+        </p>
+    <textarea id="areaSbx" name="areaSbx" rows="4" cols="50">
+        Database location =
+        Short name =
+        Long name =
+        URL found = 
+         </textarea>
+         <br>
+         <form action=returnUrl>
+            <label for="shortName">Short name:</label><br>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <label for="lastName">Long name:</label><br>
+            <input type="text" id="lname" name="lname" value="Doe"><br><br>
+            <label for="dbName">Database name:</label><br>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <input type="submit" value="Go To Sandbox">
+          </form> -->
+    </body>
+</html>
